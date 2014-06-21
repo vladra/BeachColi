@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Beachr</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+<html lang='en'>
+  <head>
+    <title>Beachr</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type='text/css'>
+      body{
+        margin-top:60px;
+      }
+      .light{
+        background:#CCC;'
+        color:#333;
+      }
+      .dark{
+        background:#333;
+        color:#CCC;
+      }
+      .grid{
+        text-align:center;
+        font-size:10px;
+      }
+      .banner{
+        text-align:center;
+        padding:10px 0;
+      }
+      .table{
+        margin-bottom:35px;
+      }
+      .banner button{
+        margin-top:7px;
+      }
+      .divider{
+        width:100%;
+        background:#CCC;
+        height:1px;
+        margin:25px 0;
+      }
+      .explainer{
+        font-weight:200;
+        color:#AAA;
+        margin-bottom:10px;
+      }
+      button{
+        margin-bottom:10px;
+      }
+    </style>
+    <script>
+      !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
+      arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+      d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
+      insertBefore(d,q)}(window,document,'script','_gs');
+
+      _gs('GSN-340356-F');
+    </script>
+  </head>
 <body>
 
 <%= yield %>
