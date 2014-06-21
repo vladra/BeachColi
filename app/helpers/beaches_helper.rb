@@ -5,19 +5,21 @@ module BeachesHelper
   # return 1 beach will look like this -> {:name, : lat, :long, : ecoli}
   # if all beaches will look like this -> [{:name, :lat, :long, :ecoli}, {:name, :lat, :long, :ecoli}, ...]
   def avg_3_or(beach=nil)
-    unless beach.nil? # return many beaches
+    return @all_data if @all_data
+    if beach == nil # return many beaches
       @beaches = Beach.all
-      all_data = []
-      @beaches.all do |beach|
+      @all_data = []
+      @beaches.all.each do |beach|
         ecolis = beach.ecolis.order('date desc').select(:count).limit(3)
-        ecoli_num = ecolis.first > 100 ? ecolis.first : (ecolis.inject(0) {|t, e| t+=e; t})/3
+        ecoli_num = ecolis.first.count > 100 ? ecolis.first.count : (ecolis.inject(0) {|t, e| t+=e.count; t})/3
         beach_data = {name: beach.name, lat: beach.lat, long: beach.long, ecoli: ecoli_num}
-        all_data << beach_data
+        @all_data << beach_data
       end
-      all_data
-    else # return  one beach
-      beach = Beach.find(beach) # ??? remove this line if  beach is instance object of Beach model
-      beach_data = {name: beach.name, lat: beach.lat, long: beach.long, ecoli: ecoli_num}
+      @all_data
+    else # ??? remove this line if  beach is instance object of Beach model
+      ecolis = beach.ecolis.order('date desc').select(:count).limit(3)
+      ecoli_num = ecolis.first.count > 100 ? ecolis.first.count : (ecolis.inject(0) {|t, e| t+=e.count; t})/3
+      @all_data = {name: beach.name, lat: beach.lat, long: beach.long, ecoli: ecoli_num}
     end
   end
 
