@@ -37,9 +37,9 @@ module BeachesHelper
 
   # Return data to build table for last 40 days or this summer, whichever has more days
   # -> {:dates = [...], :ecoli = [...]}
-  def last_40_or_summer(beach)
+  def last_28_or_summer(beach)
     ecolis = beach.ecolis.order('date asc').where('date > ?', Time.now.beginning_of_year)
-    if ecolis.count < 41
+    if ecolis.count < 29
       ecoli_data = {dates: [], ecoli: []}
       ecolis.each do |ecoli|
         ecoli_data[:dates] << ecoli.date
@@ -59,11 +59,9 @@ module BeachesHelper
     ecolis = beach.ecolis.order('date asc').where('date > ? and date < ?', start_period, end_period)
     ecoli_data = {dates: [], ecoli: []}
 
-    ecoli_data = []
     ecolis.each_slice(7) do |week_ecoli|
-      # ecoli_data[:dates] << week_ecoli.first.date
-      # ecoli_data[:ecoli] << (week_ecoli.inject(0) {|avg, e| avg += e.count; avg} / week_ecoli.length)
-      ecoli_data << week_ecoli.map {|d| d.count }
+      ecoli_data[:dates] << week_ecoli.first.date
+      ecoli_data[:ecoli] << (week_ecoli.inject(0) {|avg, e| avg += e.count; avg} / week_ecoli.length)
     end
 
     ecoli_data
