@@ -10,7 +10,7 @@ module BeachesHelper
       all_data = []
       @beaches.all do |beach|
         ecolis = beach.ecolis.order('date desc').select(:count).limit(3)
-        ecoli_num = ecolis.first > 100 ? ecolis.first : (ecolis.inject(0) {|t, e| t+=e, t})/3
+        ecoli_num = ecolis.first > 100 ? ecolis.first : (ecolis.inject(0) {|t, e| t+=e; t})/3
         beach_data = {name: beach.name, lat: beach.lat, long: beach.long, ecoli: ecoli_num}
         all_data << beach_data
       end
@@ -38,7 +38,7 @@ module BeachesHelper
   def last_40_or_summer(beach)
     ecolis = beach.ecolis.order('date asc').where('date > ?', Time.now.beginning_of_year)
     if ecolis.count < 41
-      ecoli_data = {:dates = [], :ecoli = []}
+      ecoli_data = {dates: [], ecoli: []}
       ecolis.each do |ecoli|
         ecoli_data[:dates] << ecoli.date
         ecoli_data[:ecoli] << ecoli.count
@@ -55,7 +55,7 @@ module BeachesHelper
     start_period  = Time.new(year)
     end_period    = Time.new(year+1)
     ecolis = beach.ecolis.order('date asc').where('date > ? and date < ?', start_period, end_period)
-    ecoli_data = {:dates = [], :ecoli = []}
+    ecoli_data = {dates: [], ecoli: []}
 
     ecolis.each_slice(7) do |week_ecoli|
       ecoli_data[:dates] << week_ecoli.first.date
