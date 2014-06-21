@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 gem 'nokogiri'
 gem 'whenever', :require => false
+gem 'pg'
 
 
 # Use unicorn as the app server
