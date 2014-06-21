@@ -7,8 +7,7 @@ class Beach < ActiveRecord::Base
   end
 
   # todays ecoli for certain beach
-  def today_ecoli(beach)
+  def today_ecoli
     ecolis.order('date desc').select(:count).first
   end
-
 end
