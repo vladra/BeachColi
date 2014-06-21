@@ -10,5 +10,4 @@ class Beach < ActiveRecord::Base
   def today_ecoli
     ecolis.order('date desc').select(:count).first
   end
-
 end
