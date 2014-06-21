@@ -2,6 +2,19 @@
 <%= @beach.name %>
 
 <hr>
+<%= avg_3_or(@beach).inspect %> -----::::::: <br>
+<%= avg_3_or(@beach)[:name] %> ecoli level is
+ <%= avg_3_or(@beach)[:ecoli] %>
 
-<%= avg_3_or(@beach)[:name] %>
-<%= avg_3_or(@beach)[:ecoli] %>
+<hr>
+<%= ecoli_streak(@beach) %> days streak
+
+<hr>
+This 40 days or summer:<br>
+<%= last_40_or_summer(@beach).inspect %>
+
+<hr>
+Last summer data:<br>
+<% summer_ecoli(@beach, Time.now.year-1).each do |i| %>
+  <%= i.inspect %><br><br><br>
+<% end %>

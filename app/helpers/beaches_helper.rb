@@ -59,9 +59,11 @@ module BeachesHelper
     ecolis = beach.ecolis.order('date asc').where('date > ? and date < ?', start_period, end_period)
     ecoli_data = {dates: [], ecoli: []}
 
+    ecoli_data = []
     ecolis.each_slice(7) do |week_ecoli|
-      ecoli_data[:dates] << week_ecoli.first.date
-      ecoli_data[:ecoli] << (week_ecoli.inject(0) {|avg, e| avg += e; avg} / week_ecoli.count)
+      # ecoli_data[:dates] << week_ecoli.first.date
+      # ecoli_data[:ecoli] << (week_ecoli.inject(0) {|avg, e| avg += e.count; avg} / week_ecoli.length)
+      ecoli_data << week_ecoli.map {|d| d.count }
     end
 
     ecoli_data
