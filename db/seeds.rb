@@ -11,15 +11,19 @@ end
 
 doc = Nokogiri::XML(open('http://app.toronto.ca/tpha/ws/beaches/history.xml?v=1.0&from=2013-06-01&to=2014-06-20'))
 data = doc.css('beachData')
-last_ecoli = 0
+last_ecoli = Hash.new(0)
 data.each do |object|
   id = object["beachId"]
   date = Date.parse(object.css('sampleDate').text)
-  count = object.css('eColiCount').text
-  count.nil? ? count = last_ecoli : count
+  count = object.css('eColiCount')
+
+  count.empty? ? count = last_ecoli[id] : count = count.text
+
+  last_ecoli[id] = count if !count.empty?
+
   advisory = object.css('beachAdvisory').text
   status = object.css('beachStatus').text
-  last_ecoli = count if !count.nil?
+
   Beach.find(id).ecolis << Ecoli.create(date: date, count: count, advisory: advisory, status: status)
 end
 
