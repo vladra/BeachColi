@@ -68,3 +68,7 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
       <p>Copyright Beachr 2014. This site was crafted by Alessia Bellisario, Brandon Craft, Hassan Jalil and Vladimir Dralo, students at Bitmaker Labs.</p>
     </footer>
     </div>
+
+    <%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or.to_json}, style: "display: none;" do %>
+      Loading beaches data for javascript...
+    <% end %>
