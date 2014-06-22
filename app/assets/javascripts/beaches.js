@@ -83,7 +83,7 @@ function load_map() {
 
   if(beaches_data.length > 1){
     var mapOptions = {
-      center: new google.maps.LatLng(43.585563, -79.540732),
+      center: new google.maps.LatLng(43.66381, -79.305057),
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       styles: map_style,
@@ -94,7 +94,7 @@ function load_map() {
     var lat = beaches_data[0].lat;
     var mapOptions = {
       center: new google.maps.LatLng(lat, lon),
-      zoom: 12,
+      zoom: 13,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       styles: map_style,
       draggable: false,
