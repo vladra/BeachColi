@@ -35,7 +35,14 @@
         </div>
         &#160;
         <div class='row'>
-        <div class='span four'><h3>E. Coli Count, Past 7 Days</h3></div>
+        <div class='span five'><h3>E. Coli Count, Past 7 Days</h3></div>
+        <div class='span five'><h3>Today's E. Coli Count</h3>
+        <p><%= @beach.today_ecoli %></p>
+
+        <div class='span five'><h3>3 Day Average</h3>
+        <p><%= avg_3_or(@beach)[0][:ecoli] %></p>
+
+        </div>
         </div>
         <div class='row'>
           <div class='span five'>
@@ -86,30 +93,6 @@
         </div>
 
 
-<%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or(@beach).to_json}, style: "display: none;" do %>
-  Loading beaches data for javascript...
-<% end %>
-
-
-<%= avg_3_or.inspect %>
-<hr>
-
-<hr>
-Today ecoli: <%= @beach.today_ecoli %>
-
-<hr>
-
-
-<hr>
-<%= ecoli_streak(@beach) %> days streak
-
-<hr>
-This 28 days or summer:<br>
-<%= last_28_or_summer(@beach).inspect %>
-
-<hr>
-Last summer data:<br>
-<%= summer_ecoli(@beach, Time.now.year-1).inspect %>
 
 
 <%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or(@beach).to_json}, style: "display: none;" do %>
