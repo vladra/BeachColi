@@ -163,9 +163,20 @@ $( document ).on('ready page:load', function() {
       var this_summer_dates = beach_this_summer.dates;
       var this_summer_ecoli = beach_this_summer.ecoli;
       var ctx = document.getElementById("chart_this_summer").getContext("2d");
+      var line = [];
+      this_summer_dates.forEach(function (x) {
+        line.push(100)
+      })
       var data = {
         labels : this_summer_dates,
         datasets : [
+          {
+            fillColor : "rgba(151,187,205,0)",
+            strokeColor : "#E74338",
+            pointColor : "#E74338",
+            pointStrokeColor : "#fff",
+            data : line
+          },
           {
             fillColor : "rgba(151,187,205,0.5)",
             strokeColor : "rgba(151,187,205,1)",
@@ -184,10 +195,21 @@ $( document ).on('ready page:load', function() {
     var last_summer_dates = beach_last_summer.dates;
     var last_summer_ecoli = beach_last_summer.ecoli;
     var ctx = document.getElementById("chart_last_summer").getContext("2d");
+    var line = [];
+    last_summer_dates.forEach(function (x) {
+      line.push(100)
+    })
 
     var data = {
       labels : last_summer_dates,
       datasets : [
+        {
+          fillColor : "rgba(151,187,205,0)",
+          strokeColor : "#E74338",
+          pointColor : "#E74338",
+          pointStrokeColor : "#fff",
+          data : line
+        },
         {
           fillColor : "rgba(151,187,205,0.5)",
           strokeColor : "rgba(151,187,205,1)",
