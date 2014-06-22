@@ -152,7 +152,7 @@ function ecoli_text(ecoli_level) {
   }
 }
 
-$( document ).ready(function() {
+$( document ).on('ready page:load', function() {
   // CHART THIS SUMMER
   // insert this to html to show table -> <canvas id="chart_this_summer"></canvas>
   var beach_this_summer = $('#beaches_this_summer').data('table-summer');
