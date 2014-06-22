@@ -1,6 +1,6 @@
     <div class='navbar fixed'>
       <div class='container'>
-        <h4 class='pull-left'>Beachr</h4>
+        <h4 class='pull-left'><%= link_to "Beachr", "/" %></h4>
         <ul class='pull-right'>
           <li><a href='www.google.com'>About</a></li>
         </ul>
@@ -11,23 +11,77 @@
       <div class='banner row'>
         <div class='span ten'>
           <h4>A small (less than 2 kb) CSS framework</h4>
-          <a href='https://github.com/andhart/bijou'><button class='button primary small'>Get it on Github</button></a>
+          <br>
         </div>
       </div>
 
-      <h4 class='explainer'>Life's a beach.</h4>
+      <h4 class='explainer'><%= @beach.name %></h4>
       <div class='grid'>
         <div class='row'>
           <div class='span ten'><br><br><div id="map_canvas"></div></div>
         </div>
 
-        <div><p>Take a dip at one of Toronto's 11 beaches—without risking infection!</p>
-      </div>
-          <footer>
-      <p>Copyright Beachr 2014. This site was crafted by Alessia Bellisario, Brandon Craft, Hassan Jalil and Vladimir Dralo, students at Bitmaker Labs.</p>
-    </footer>
+
+
     </div>
-<div id="map_canvas" style="width:1000px; height:600px"></div>
+
+
+
+        <div class='row'>
+          <div class='span four'><h3>Amenities</h3></div>
+        <div class='row'>
+          <div class='span nine'><%= image_tag "icons/Parking.png" %>&#160;&#160;&#160;<%= image_tag "icons/Volleyball.png" %>&#160;&#160;&#160;<%= image_tag "icons/Food.png" %>&#160;&#160;&#160;<%= image_tag "icons/Coffee2.png" %></div><br>
+          </div>
+        </div>
+        &#160;
+        <div class='row'>
+        <div class='span four'><h3>E. Coli Count, Past 7 Days</h3></div>
+        </div>
+        <div class='row'>
+          <div class='span five'>
+            <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>E. Coli Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday</td>
+            <td><%= @lastweek[0].count %></td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td><%= @lastweek[1].count %></td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td><%= @lastweek[2].count %></td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td><%= @lastweek[3].count %></td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td><%= @lastweek[4].count %></td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td><%= @lastweek[5].count %></td>
+          </tr>
+           <tr>
+            <td>Sunday</td>
+            <td><%= @lastweek[6].count %></td>
+          </tr>
+        </tbody>
+      </table>
+          </div>
+          <div class='span four'></div>
+          </div>
+        </div>
+
 
 <%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or(@beach).to_json}, style: "display: none;" do %>
   Loading beaches data for javascript...
@@ -70,3 +124,10 @@ Last summer data:<br>
   Loading beaches data for javascript...
 <% end %>
 
+<canvas id="chart_this_summer"></canvas>
+
+<canvas id="chart_last_summer"></canvas>
+
+          <footer>
+      <p>Copyright Beachr 2014. This site was crafted by Alessia Bellisario, Brandon Craft, Hassan Jalil and Vladimir Dralo, students at Bitmaker Labs.</p>
+    </footer>

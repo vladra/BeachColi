@@ -24,7 +24,7 @@ a:hover {
 }
 .container {
     width: 1000px;
-    margin: 27px auto;
+    margin: 15px auto;
 }
 .pull-left {
     float: left;
@@ -99,13 +99,15 @@ h2 {
     font-size: 2.5em;
 }
 h3 {
-    font-size: 2em;
+    font-size: 1.5em;
+    font-weight: 700;
 }
 h4 {
     font-size: 3em;
 }
 h5 {
-    font-size: 1em;
+    font-size: 1.5em;
+    font-weight: 700;
 }
 h6 {
     font-size: .8em;
@@ -175,7 +177,7 @@ p {
     padding: 10px;
     margin-bottom: 10px;
     border-bottom: 1px #DDD solid;
-    height: 120px;
+    height: 100px;
 }
 .navbar h4 {
     color: #191919;

@@ -6,6 +6,7 @@ class BeachesController < ApplicationController
 
   def show
     @beach = Beach.find(params[:id])
+    @lastweek = @beach.last_7
   end
 
   private
