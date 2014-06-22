@@ -1,12 +1,12 @@
+<div id="map_canvas" style="width:1000px; height:600px"></div>
 
-<%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or.to_json}, style: "display: none;" do %>
+<%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or(@beach).to_json}, style: "display: none;" do %>
   Loading beaches data for javascript...
 <% end %>
 
 
 <%= @beach.name %>
 <hr>
-
 <%= avg_3_or.inspect %>
 <hr>
 Last 7 days ecoli: <%= @beach.last_7.inspect %>

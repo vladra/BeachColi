@@ -75,16 +75,45 @@ map_style = [
       ]
   }
 ];
+
+var mapOptions_all = {
+  center: new google.maps.LatLng(43.585563, -79.540732),
+  zoom: 10,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  styles: map_style
+};
+var mapOptions_one = {
+  center: new google.maps.LatLng(43.585563, -79.540732),
+  zoom: 10,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  styles: map_style
+};
+
 function load_map() {
-  var mapOptions = {
-    center: new google.maps.LatLng(43.585563, -79.540732),
-    zoom: 10,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    styles: map_style
+  var beaches_data = $('#beaches_data').data('beaches');
+
+  if(beaches_data.length > 1){
+    var mapOptions = {
+      center: new google.maps.LatLng(43.585563, -79.540732),
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: map_style
+    };
+  }else{
+    var lon = beaches_data[0].long;
+    var lat = beaches_data[0].lat;
+    var mapOptions = {
+      center: new google.maps.LatLng(lat, lon),
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: map_style,
+      draggable: false
+    };
   };
+
   var map = new google.maps.Map(document.getElementById("map_canvas"),
       mapOptions);
-  var beaches_data = $('#beaches_data').data('beaches');
+
   beaches_data.forEach(function(beach) {
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(beach.lat,beach.long),
@@ -106,6 +135,8 @@ function load_map() {
     });
   });
 };
+
+
 
 function ecoli_text(ecoli_level) {
   if(ecoli_level > 100){
