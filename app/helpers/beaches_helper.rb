@@ -19,7 +19,7 @@ module BeachesHelper
     else # ??? remove this line if  beach is instance object of Beach model
       ecolis = beach.ecolis.order('date desc').select(:count).limit(3)
       ecoli_num = ecolis.first.count > 100 ? ecolis.first.count : (ecolis.inject(0) {|t, e| t+=e.count; t})/3
-      @all_data = {name: beach.name, lat: beach.lat, long: beach.long, ecoli: ecoli_num}
+      @all_data = [{name: beach.name, lat: beach.lat, long: beach.long, ecoli: ecoli_num}]
     end
   end
 
