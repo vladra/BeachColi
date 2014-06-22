@@ -25,7 +25,8 @@ a:hover {
     max-width: 1500px;
     margin: 0 auto;
     // background: url(Rouge2.jpg), -moz-linear-gradient(top, #ADB2B6 0%, #ABAEB3 100%);
-}   background: -webkit-gradient(linear, top, rgba(0,0,0,0.5), rgba(200,20,200,0.5)), url('Rouge2.png');
+background: -webkit-gradient(linear, top, rgba(0,0,0,0.5), rgba(200,20,200,0.5)), url('Rouge2.png');
+}
 
 * {
     margin: 0;
