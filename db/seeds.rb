@@ -3,7 +3,7 @@ require 'open-uri'
 
 data = Nokogiri::XML(open("http://app.toronto.ca/tpha/ws/beaches.xml?v=1.0"))
 data.css('beachMeta').each do |object|
-  object.to_h
+  # object = object.to_h
   if object['id'].to_i != 0
     Beach.create(name: object["name"], lat: object["lat"], long: object["long"])
   end
