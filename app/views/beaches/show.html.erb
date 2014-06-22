@@ -39,8 +39,8 @@
         <div class='span five'><h3>Today's E. Coli Count</h3>
         <p><%= @beach.today_ecoli %></p>
 
-        <div class='span five'><h3>3 Day Average</h3>
-        <p><%= avg_3_or(@beach)[0][:ecoli] %></p>
+
+
 
         </div>
         </div>
@@ -86,7 +86,8 @@
       </table>
       </div>
       <div class='span five'>
-
+<h3>3 Day Average</h3>
+        <p><%= avg_3_or(@beach)[0][:ecoli] %></p>
       </div>
           <div class='span four'></div>
           </div>
