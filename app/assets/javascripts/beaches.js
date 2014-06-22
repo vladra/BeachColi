@@ -1,6 +1,6 @@
-$( document ).ready(function() {
-  load_map();
-});
+// $( document ).ready(function() {
+//   load_map();
+// });
 map_style = [
   {
       "featureType": "water",
@@ -76,19 +76,6 @@ map_style = [
   }
 ];
 
-var mapOptions_all = {
-  center: new google.maps.LatLng(43.585563, -79.540732),
-  zoom: 10,
-  mapTypeId: google.maps.MapTypeId.ROADMAP,
-  styles: map_style
-};
-var mapOptions_one = {
-  center: new google.maps.LatLng(43.585563, -79.540732),
-  zoom: 10,
-  mapTypeId: google.maps.MapTypeId.ROADMAP,
-  styles: map_style
-};
-
 function load_map() {
   var beaches_data = $('#beaches_data').data('beaches');
 
@@ -147,3 +134,30 @@ function ecoli_text(ecoli_level) {
     return "Beach meets provincially established safety standards for swimming. However, the E.coli count is approaching dangerous levels"
   }
 }
+
+$( document ).ready(function() {
+  var beach_this_summer = $('#beaches_this_summer').data('table-summer');
+  var this_summer_dates = beach_this_summer.dates
+  var this_summer_ecoli = beach_this_summer.ecoli
+
+  var ctx = document.getElementById("myChart").getContext("2d");
+  ctx.canvas.width = 1000;
+  ctx.canvas.height = 300;
+  var data = {
+    labels : this_summer_dates,
+    datasets : [
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,1)",
+        pointColor : "rgba(151,187,205,1)",
+        pointStrokeColor : "#fff",
+        data : this_summer_ecoli
+      }
+    ]
+  };
+  function chart() {
+    new Chart(ctx).Line(data);
+  };
+  chart();
+  load_map();
+});
