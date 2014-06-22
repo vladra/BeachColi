@@ -1,3 +1,6 @@
+<div class='background'>
+  <div class='background-image'>
+    <div class='container'>
     <div class='navbar fixed'>
       <div class='container'>
         <h4 class='pull-left'><%= link_to "BeachColi", "/" %></h4>
@@ -6,7 +9,7 @@
         </ul>
       </div>
     </div>
-    <div class='container'>
+
 
       <div class='banner row'>
         <div class='span ten'>
@@ -15,7 +18,7 @@
         </div>
       </div>
 
-      <h4 class='explainer'><%= @beach.name %></h4>
+      <h4 class='explainer2'><%= @beach.name %></h4>
       <div class='grid'>
         <div class='row'>
           <div class='span ten'><br><br><div id="map_canvas"></div></div>
@@ -23,9 +26,13 @@
 
 
 
+
     </div>
+</div>
+</div>
+</div>
 
-
+<div class='container'>
 
         <div class='row'>
           <div class='span four'><h3>Beach Amenities</h3></div>
@@ -90,6 +97,10 @@
             <td><h3>Three Day Average</h3></td>
             <td><%= avg_3_or(@beach)[0][:ecoli] %></td>
           </tr>
+          <tr>
+            <td><h3>E. Coli-Free Win Streak</h3></td>
+            <td><%= ecoli_streak(@beach) %> days</td>
+          </tr>
         </tbody>
       </table>
       </div>
@@ -127,7 +138,7 @@
   Loading beaches data for javascript...
 <% end %>
       <div class='span ten'>
-      <h3>E. Coli Levels This Summer</h3>
+      <h3>E. Coli Levels Last Summer</h3>
       <canvas id="chart_last_summer" width="900" height="300"></canvas>
       </div>
       </div>
@@ -135,3 +146,4 @@
           <footer>
       <p>Copyright Beachr 2014. This site was crafted by Alessia Bellisario, Brandon Craft, Hassan Jalil and Vladimir Dralo, students at Bitmaker Labs.</p>
     </footer>
+  </div>
