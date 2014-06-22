@@ -125,9 +125,9 @@ function load_map() {
     console.log(marker.icon);
     var infowindow = new google.maps.InfoWindow({
       content: "<h3 style='text-align:center'>"+beach.name+"</h3>"+
-      "<p style='text-align:center'><u>Ecoli level</u>: <b>"+beach.ecoli+"</b></p>"+
-      "<p style='text-align:center;'><u>Message</u>: "+ecoli_text(beach.ecoli)+"</p>"+
-      "<p style='text-align:center'><a href=/beaches/"+beach.id+">Details</a></p>",
+      "<p class='js-box'><u>Ecoli level</u>: <b>"+beach.ecoli+"</b></p>"+
+      "<p class='js-box'><u>Message</u>: "+ecoli_text(beach.ecoli)+"</p>"+
+      "<p class='js-box'><a style='color:#46BCEC;' href=/beaches/"+beach.id+">Details</a></p>",
       maxWidth: 300
     });
     google.maps.event.addListener(marker, 'click', function() {
