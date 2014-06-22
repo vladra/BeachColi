@@ -56,3 +56,17 @@ This 28 days or summer:<br>
 <hr>
 Last summer data:<br>
 <%= summer_ecoli(@beach, Time.now.year-1).inspect %>
+
+
+<%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or(@beach).to_json}, style: "display: none;" do %>
+  Loading beaches data for javascript...
+<% end %>
+
+<%= content_tag "div", id: "beaches_this_summer", data: {table_summer: last_28_or_summer(@beach)}, style: "display: none;" do %>
+  Loading beaches data for javascript...
+<% end %>
+
+<%= content_tag "div", id: "beaches_last_summer", data: {table_summer: summer_ecoli(@beach, Time.now.year-1)}, style: "display: none;" do %>
+  Loading beaches data for javascript...
+<% end %>
+
