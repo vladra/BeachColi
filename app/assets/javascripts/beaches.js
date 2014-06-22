@@ -136,11 +136,12 @@ function ecoli_text(ecoli_level) {
 }
 
 $( document ).ready(function() {
+  // CHART THIS SUMMER
+  // insert this to html to show table -> <canvas id="chart_this_summer"></canvas>
   var beach_this_summer = $('#beaches_this_summer').data('table-summer');
   var this_summer_dates = beach_this_summer.dates
   var this_summer_ecoli = beach_this_summer.ecoli
-
-  var ctx = document.getElementById("myChart").getContext("2d");
+  var ctx = document.getElementById("chart_this_summer").getContext("2d");
   ctx.canvas.width = 1000;
   ctx.canvas.height = 300;
   var data = {
@@ -155,9 +156,45 @@ $( document ).ready(function() {
       }
     ]
   };
-  function chart() {
+  function chart_this_summer() {
     new Chart(ctx).Line(data);
   };
-  chart();
+  chart_this_summer();
+
+  // CHART LAST SUMMER
+  // insert this to html to show table -> <canvas id="chart_last_summer"></canvas>
+  var beach_last_summer = $('#beaches_last_summer').data('table-summer');
+  var last_summer_dates = beach_last_summer.dates
+  var last_summer_ecoli = beach_last_summer.ecoli
+  var ctx = document.getElementById("chart_last_summer").getContext("2d");
+  ctx.canvas.width = 1000;
+  ctx.canvas.height = 300;
+  var data = {
+    labels : last_summer_dates,
+    datasets : [
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,1)",
+        pointColor : "rgba(151,187,205,1)",
+        pointStrokeColor : "#fff",
+        data : last_summer_ecoli
+      }
+    ]
+  };
+  function chart_last_summer() {
+    new Chart(ctx).Line(data);
+  };
+  chart_last_summer();
+
   load_map();
 });
+
+
+
+
+
+
+
+
+
+
