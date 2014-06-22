@@ -1,3 +1,6 @@
+<div class='background'>
+  <div class='background-image'>
+    <div class='container'>
     <div class='navbar fixed'>
       <div class='container'>
         <h4 class='pull-left'><%= link_to "BeachColi", "/" %></h4>
@@ -6,7 +9,7 @@
         </ul>
       </div>
     </div>
-    <div class='container'>
+
 
       <div class='banner row'>
         <div class='span ten'>
@@ -15,7 +18,7 @@
         </div>
       </div>
 
-      <h4 class='explainer'><%= @beach.name %></h4>
+      <h4 class='explainer2'><%= @beach.name %></h4>
       <div class='grid'>
         <div class='row'>
           <div class='span ten'><br><br><div id="map_canvas"></div></div>
@@ -23,12 +26,16 @@
 
 
 
+
     </div>
+</div>
+</div>
+</div>
 
-
+<div class='container'>
 
         <div class='row'>
-          <div class='span four'><h3>Amenities</h3></div>
+          <div class='span four'><h3>Beach Amenities</h3></div>
         <div class='row'>
           <div class='span nine'><%= image_tag "icons/Parking.png" %>&#160;&#160;&#160;<%= image_tag "icons/Volleyball.png" %>&#160;&#160;&#160;<%= image_tag "icons/Food.png" %>&#160;&#160;&#160;<%= image_tag "icons/Coffee2.png" %></div><br>
           </div>
@@ -36,13 +43,7 @@
         &#160;
         <div class='row'>
         <div class='span five'><h3>E. Coli Count, Past 7 Days</h3></div>
-        <div class='span five'><h3>Today's E. Coli Count</h3>
-        <p><%= @beach.today_ecoli %></p>
 
-
-
-
-        </div>
         </div>
         <div class='row'>
           <div class='span five'>
@@ -86,15 +87,25 @@
       </table>
       </div>
       <div class='span five'>
-<h3>3 Day Average</h3>
-        <p><%= avg_3_or(@beach)[0][:ecoli] %></p>
+      <table class='table'>
+        <tbody>
+          <tr>
+            <td><h3>Today's E. Coli Count</h3></td>
+            <td><%= @beach.today_ecoli %></td>
+          </tr>
+          <tr>
+            <td><h3>Three Day Average</h3></td>
+            <td><%= avg_3_or(@beach)[0][:ecoli] %></td>
+          </tr>
+          <tr>
+            <td><h3>E. Coli-Free Win Streak</h3></td>
+            <td><%= ecoli_streak(@beach) %> days</td>
+          </tr>
+        </tbody>
+      </table>
       </div>
-          <div class='span four'></div>
-          </div>
         </div>
-
-
-
+      <div class='row'>
 
 <%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or(@beach).to_json}, style: "display: none;" do %>
   Loading beaches data for javascript...
@@ -107,11 +118,43 @@
 <%= content_tag "div", id: "beaches_last_summer", data: {table_summer: summer_ecoli(@beach, Time.now.year-1)}, style: "display: none;" do %>
   Loading beaches data for javascript...
 <% end %>
+      <div class='span ten'>
+      <h3>E. Coli Levels This Summer</h3>
+      <canvas id="chart_this_summer" width="900" height="300"></canvas>
+      </div>
+      </div>
 
-<canvas id="chart_this_summer"></canvas>
+            <div class='row'>
 
-<canvas id="chart_last_summer"></canvas>
+<%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or(@beach).to_json}, style: "display: none;" do %>
+  Loading beaches data for javascript...
+<% end %>
+
+<%= content_tag "div", id: "beaches_this_summer", data: {table_summer: last_28_or_summer(@beach)}, style: "display: none;" do %>
+  Loading beaches data for javascript...
+<% end %>
+
+<%= content_tag "div", id: "beaches_last_summer", data: {table_summer: summer_ecoli(@beach, Time.now.year-1)}, style: "display: none;" do %>
+  Loading beaches data for javascript...
+<% end %>
+      <div class='span ten'>
+      <h3>E. Coli Levels Last Summer</h3>
+      <canvas id="chart_last_summer" width="900" height="300"></canvas>
+      </div>
+      </div>
 
           <footer>
       <p>Copyright Beachr 2014. This site was crafted by Alessia Bellisario, Brandon Craft, Hassan Jalil and Vladimir Dralo, students at Bitmaker Labs.</p>
     </footer>
+  </div>
+
+<div>
+    Current Temp: <%= @weather[:current_temp] %> |
+    Chance of Precipitation: <%= @weather[:chance_precip] %> |
+    Wind Speed: <%= @weather[:wind_speed] %> |
+    Current Summary: <%= @weather[:current_summary] %> |
+    Hight Temp: <%= @weather[:max] %> |
+    Low temp: <%= @weather[:min] %> |
+    Daily Summary: <%= @weather[:daily_summary] %> |
+    7 Day: <%= @weather[:week_summary] %> |
+  </div>
