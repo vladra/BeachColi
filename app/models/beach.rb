@@ -11,3 +11,5 @@ class Beach < ActiveRecord::Base
     ecolis.order('date desc').select(:count).first.count
   end
 end
+
+
