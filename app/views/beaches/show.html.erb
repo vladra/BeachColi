@@ -1,6 +1,13 @@
 
-<%= @beach.name %>
+<%= content_tag "div", id: "beaches_data", data: {beaches: avg_3_or.to_json}, style: "display: none;" do %>
+  Loading beaches data for javascript...
+<% end %>
 
+
+<%= @beach.name %>
+<hr>
+
+<%= avg_3_or.inspect %>
 <hr>
 Last 7 days ecoli: <%= @beach.last_7.inspect %>
 
@@ -8,9 +15,7 @@ Last 7 days ecoli: <%= @beach.last_7.inspect %>
 Today ecoli: <%= @beach.today_ecoli %>
 
 <hr>
-<%= avg_3_or(@beach).inspect %> -----::::::: <br>
-<%= avg_3_or(@beach)[:name] %> ecoli level is
- <%= avg_3_or(@beach)[:ecoli] %>
+
 
 <hr>
 <%= ecoli_streak(@beach) %> days streak
