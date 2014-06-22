@@ -10,6 +10,9 @@ class BeachesController < ApplicationController
     @weather = get_weather
   end
 
+  def about
+  end
+
   private
 
   ForecastIO.api_key = 'f3643cbeb1a9eaf8a67e33875b1b8456'
