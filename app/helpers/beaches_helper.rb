@@ -42,7 +42,7 @@ module BeachesHelper
     if ecolis.count < 29
       ecoli_data = {dates: [], ecoli: []}
       ecolis.each do |ecoli|
-        ecoli_data[:dates] << ecoli.date
+        ecoli_data[:dates] << ecoli.date.strftime("%d %b")
         ecoli_data[:ecoli] << ecoli.count
       end
       ecoli_data
@@ -60,7 +60,7 @@ module BeachesHelper
     ecoli_data = {dates: [], ecoli: []}
 
     ecolis.each_slice(7) do |week_ecoli|
-      ecoli_data[:dates] << week_ecoli.first.date
+      ecoli_data[:dates] << week_ecoli.first.date.strftime("%d %b")
       ecoli_data[:ecoli] << (week_ecoli.inject(0) {|avg, e| avg += e.count; avg} / week_ecoli.length)
     end
 
